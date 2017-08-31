@@ -1,0 +1,26 @@
+package testngcase;
+
+import java.util.concurrent.TimeUnit;
+
+import org.testng.annotations.Test;
+
+import testcase.Purchase;
+@Test
+public class PurchaseTest extends JibeLoginTest {
+	 Purchase p=new Purchase();
+	
+	
+	@Test(priority=0)
+	public void purchase() throws Exception
+	{
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		Thread.sleep(1000);
+	   
+	    
+	 
+	    p.purchaseMenu(driver);
+	    
+	
+			
+	}
+}

@@ -1,0 +1,92 @@
+1
+package TestNG;
+2
+import org.openqa.selenium.By;
+3
+import org.openqa.selenium.WebDriver;
+4
+import org.openqa.selenium.WebElement;
+5
+import org.openqa.selenium.firefox.FirefoxDriver;
+6
+import org.testng.Assert;
+7
+import org.testng.annotations.Test;
+8
+ 
+9
+public class DemoTestNG {
+10
+       public WebDriver driver = new FirefoxDriver();
+11
+       String appUrl = &quot;https://accounts.google.com&quot;;
+12
+ 
+13
+@Test
+14
+public void gmailLogin() {
+15
+             // launch the firefox browser and open the application url
+16
+              driver.get(&quot;https://gmail.com&quot;);
+17
+              
+18
+// maximize the browser window
+19
+              driver.manage().window().maximize();
+20
+              
+21
+// declare and initialize the variable to store the expected title of the webpage.
+22
+              String expectedTitle = &quot; Sign in - Google Accounts &quot;;
+23
+              
+24
+// fetch the title of the web page and save it into a string variable
+25
+              String actualTitle = driver.getTitle();
+26
+              Assert.assertEquals(expectedTitle,actualTitle);
+27
+              
+28
+// enter a valid username in the email textbox
+29
+              WebElement username = driver.findElement(By.id(&quot;Email&quot;));
+30
+              username.clear();
+31
+              username.sendKeys(&quot;TestSelenium&quot;);
+32
+ 
+33
+// enter a valid password in the password textbox
+34
+              WebElement password = driver.findElement(By.id(&quot;Passwd&quot;));
+35
+              password.clear();
+36
+              password.sendKeys(&quot;password123&quot;);
+37
+              
+38
+// click on the Sign in button
+39
+              WebElement SignInButton = driver.findElement(By.id(&quot;signIn&quot;));
+40
+              SignInButton.click();
+41
+              
+42
+// close the web browser
+43
+              driver.close();
+44
+}
+45
+}
+
+}

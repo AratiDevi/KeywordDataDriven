@@ -1,0 +1,16 @@
+[OFF : JIBE : Admin : SURVEY] After saving Add/Edit Certificate with more than 10 digits in Term field ,the value in Term is not displayed.
+
+
+
+
+Steps:
+
+1. Technical>Admin>Survey and Certificate Settings>Survey Certificate.
+
+2. Click on Add/Edit Survey Certificate.
+
+3. Fill all the details and save.
+
+4. Observe the Term Column in Survey Certificate page.
+
+ISSUE: After saving Add/Edit Certificate with more than 10 digits in Term field, the value in Term is not displayed.

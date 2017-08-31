@@ -1,0 +1,35 @@
+package commonfunction;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class JibeLogin {
+	
+	public String Log(WebDriver driver1)
+	{
+		WebDriver driver=driver1;
+		
+		WebElement username= driver.findElement(By.id("ctl00_MainContent_LoginUser_UserName"));
+		username.clear();
+		username.sendKeys("jibeadmin");
+		
+		WebElement password= driver.findElement(By.id("ctl00_MainContent_LoginUser_Password"));
+		password.clear();
+		password.sendKeys("jibe@123");
+		
+		driver.findElement(By.id("ctl00_MainContent_LoginUser_LoginButton")).click();
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		String title= driver.getTitle().trim();
+		return title;
+		
+		
+		
+		
+	}
+
+}

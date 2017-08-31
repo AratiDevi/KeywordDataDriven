@@ -1,0 +1,13 @@
+Copy the .hpi file into your $JENKINS_HOME/plugins directory
+Restart Jenkins
+Now you should see your new plugin under “Installed” Tab-View in Jenkins (https://<yourJenkinsURL>/pluginManager/installed)
+
+---------------
+2) Download the plugin and upload it using Jenkins  interface
+
+Visit Jenkins plugins index page -> http://updates.jenkins-ci.org/download/plugins/
+Choose plugin you want to download e.g. “thinBackup” plugin
+Download the version you need (*.hpi)
+Use Jenkins “Upload Plugin” interface to upload and install the plugin; 
+you  can find it under “Manage Jenkins -> Manage Plugins -> Advanced” menu.
+https://<yourJenkinsURL>/pluginManager/advanced

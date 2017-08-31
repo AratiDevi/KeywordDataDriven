@@ -1,0 +1,13 @@
+b- Open command prompt and set the classpath-
+
+While setting classpath we will set the path of bin folder and libs folder (inside libs we have all libraries)
+
+Home directory > set classpath=C:\Users\Learn-automation\bin;C:\Users\Learn-automation\libs\*;
+
+Note- Please make the changes as per your system
+
+c- Open notepad and type the below command and save as .bat file –
+
+In my case, I have saved as run.bat
+
+java -cp bin;libs/* org.testng.TestNG testng.xml

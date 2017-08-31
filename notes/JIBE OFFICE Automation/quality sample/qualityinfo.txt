@@ -1,0 +1,394 @@
+package quality;
+
+import java.util.concurrent.TimeUnit;
+
+//import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+
+//import static org.junit.Assert.assertTrue;
+
+
+import commonfunction.Login;
+//import commonfunction.rw;
+//import qpackage.qinterface;
+
+public class qualityinfo extends Login  {
+	public static WebDriver driver;
+	
+public void pendingapproval(WebDriver driver1) throws Exception //Pending approval
+	{
+		WebDriver driver=driver1;
+		Actions action=new Actions(driver);
+		
+		Thread.sleep(1000);
+	
+		
+	    WebElement menu=driver.findElement(By.linkText("Quality"));  //Quality
+		
+		action.moveToElement(menu).build().perform();
+		Thread.sleep(1000);
+	   
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		
+		WebElement submenu=driver.findElement(By.linkText("FMS"));  //FMS
+		
+		action.moveToElement(submenu).build().perform();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.linkText("FMS File Approval")).click();//fms file approval
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		
+		WebElement radiobtn=driver.findElement(By.id("ctl00_MainContent_optApprove_0"));//pending approval
+		radiobtn.click();
+		
+		Thread.sleep(1000);
+		driver.findElement(By.id("ctl00_MainContent_btnFilter")).click();//clicking search button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("ctl00_MainContent_gvFMSFile_ctl02_BtnApprove")).click();//clicking on approve button "A"
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);						
+				
+		driver.findElement(By.xpath(".//*[@id='ctl00_MainContent_txtRemark']")).sendKeys("approved");//typing "approved" in the box
+		
+				
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+					
+		driver.findElement(By.id("ctl00_MainContent_btnSaveRemark")).click();// clicking save button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.switchTo().alert().accept();//clicking ok button of the alert box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		 Thread.sleep(1000);		
+				
+	//	driver.findElement(By.xpath(".//*[@id='ctl00_MainContent_gvFMSFile']/tbody/tr/td"));//no record found
+		Thread.sleep(1000);
+	}
+	
+	
+	public void approval(WebDriver driver1) throws Exception //Approval
+	{
+		//driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		//Thread.sleep(1000L);
+		
+		WebDriver driver=driver1;
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		WebElement radiobtn=driver.findElement(By.id("ctl00_MainContent_optApprove_1"));//approval
+		radiobtn.click();
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		//WebElement srch=driver.findElement(By.id("ctl00_MainContent_txtfilter"));
+		//srch.sendKeys("book1");
+		
+		driver.findElement(By.id("ctl00_MainContent_btnFilter")).click();//clicking search button
+		Thread.sleep(1000L);
+	}
+	
+	public void pendingblank(WebDriver driver1) throws Exception //Pending approval with blank message
+	{
+		WebDriver driver=driver1;
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		WebElement radiobtn=driver.findElement(By.id("ctl00_MainContent_optApprove_0"));//pending approval
+		radiobtn.click();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("ctl00_MainContent_btnFilter")).click();//clicking search button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("ctl00_MainContent_gvFMSFile_ctl02_BtnApprove")).click();//click approve button "A"
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+					
+			
+		driver.findElement(By.id("ctl00_MainContent_btnSaveRemark")).click();//click save button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.switchTo().alert().accept();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("closePopupbutton")).click();//click the close button of popup box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		
+	}
+	
+	public void form(WebDriver driver1) throws Exception //creating a form
+	{
+		WebDriver driver=driver1;
+		Actions action=new Actions(driver);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+        WebElement menu=driver.findElement(By.linkText("Quality"));  //Quality
+		
+		action.moveToElement(menu).build().perform();
+		
+		Thread.sleep(1000);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		
+        WebElement submenu=driver.findElement(By.linkText("FMS"));  //FMS
+		
+		action.moveToElement(submenu).build().perform();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath(".//*[@id='nav']/li[5]/ul/li[10]/ul/li[4]/a/span")).click();//FMS form type
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("ctl00_MainContent_txtFormType")).sendKeys("test100");//type test100 in the text box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("ctl00_MainContent_btnFormTypeSave")).click();//click on save button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.switchTo().alert().accept();//clicking ok button of the alert box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+	}
+	
+	public void formverify(WebDriver driver1) throws Exception //verifying whether newly created form is added in the form type
+	{
+		WebDriver driver=driver1;
+		Actions action=new Actions(driver);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		WebElement menu=driver.findElement(By.linkText("Quality"));  //Quality
+		
+		action.moveToElement(menu).build().perform();
+		
+		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		
+        WebElement submenu=driver.findElement(By.linkText("FMS"));  //FMS
+		
+		action.moveToElement(submenu).build().perform();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath(".//*[@id='nav']/li[5]/ul/li[10]/ul/li[1]/a/span")).click();//FMS Main
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		WebElement iframe=driver.findElement(By.id("docPreview"));//switching to main frame
+		driver.switchTo().frame(iframe);
+		
+		Thread.sleep(1000);
+		
+		Select sel=new Select(driver.findElement(By.id("ddlFormTypeSearch")));//drop down box of Form type
+		sel.selectByVisibleText("test100");
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.switchTo().defaultContent();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+	}
+		
+	public void formdeleteok(WebDriver driver1) throws Exception //deleting a form by clicking the ok button
+	{
+		
+		WebDriver driver=driver1;
+		Actions action=new Actions(driver);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+        WebElement menu=driver.findElement(By.linkText("Quality"));  //Quality
+		
+		action.moveToElement(menu).build().perform();
+		
+		Thread.sleep(1000);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		
+        WebElement submenu=driver.findElement(By.linkText("FMS"));  //FMS
+		
+		action.moveToElement(submenu).build().perform();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath(".//*[@id='nav']/li[5]/ul/li[10]/ul/li[4]/a/span")).click();//FMS form type
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath(".//*[@id='ctl00_MainContent_grdFormType_ctl07_ImgDeleteFormType']")).click();//xpath of form to be deleted
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.switchTo().alert().accept();//clicking ok button of the alert box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);		
+				
+	}
+	
+	public void formdeletecancel(WebDriver driver1) throws Exception //not deleting the form by clicking cancel button
+	{
+		WebDriver driver=driver1;
+		
+        driver.findElement(By.xpath(".//*[@id='ctl00_MainContent_grdFormType_ctl07_ImgDeleteFormType']")).click();//xpath of delete button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+						
+		driver.switchTo().alert().dismiss();//clicking cancel button of the alert box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		
+	}
+	public void formedit(WebDriver driver1) throws Exception //editing a form
+	{
+		WebDriver driver=driver1;
+		
+		driver.findElement(By.id("ctl00_MainContent_grdFormType_ctl04_ImgEditFormType")).click();//id of edit button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		WebElement edt=driver.findElement(By.xpath(".//*[@id='ctl00_MainContent_txtFormType']"));//xpath of text box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		edt.clear();//clearing the text box
+		
+		edt.sendKeys("test101");//typing new value
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(5000L);
+		
+		driver.findElement(By.id("ctl00_MainContent_btnFormTypeSave")).click();//click on save button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(5000L);
+		
+		driver.switchTo().alert().accept();//clicking ok button of the alert box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+	}
+	
+	public void fileeditverify(WebDriver driver1) throws Exception
+	{
+		WebDriver driver=driver1;
+		Actions action=new Actions(driver);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+        WebElement menu=driver.findElement(By.linkText("Quality"));  //Quality
+		
+		action.moveToElement(menu).build().perform();
+		
+		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		
+        WebElement submenu=driver.findElement(By.linkText("FMS"));  //FMS
+		
+		action.moveToElement(submenu).build().perform();
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath(".//*[@id='nav']/li[5]/ul/li[10]/ul/li[1]/a/span")).click();//FMS Main
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("854")).click();//click on reshmatest folder
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("855")).click();//click on Book1.xlsx file
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		WebElement iframe=driver.findElement(By.id("docPreview"));//switching to main frame
+		driver.switchTo().frame(iframe);
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("ImgEditForm")).click();//click on edit button
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		Select sel=new Select(driver.findElement(By.id("ddlFormType")));//drop down box of Form type
+		sel.selectByVisibleText("test100");// should select test100 as value
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("closePopupbutton")).click();// close the edit form box
+		
+		driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		Thread.sleep(1000L);
+		
+		/*String expected="test100";
+		String actual="ddlFormType";
+		
+		assertTrue("verification failed",expected.equals(driver.findElement(By.id(actual)).getText()));*/
+					
+	}
+	
+	
+	
+}

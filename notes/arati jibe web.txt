@@ -1,0 +1,561 @@
+
+	                                   // SCENARIO-2
+
+                                  //FOR WEB EMAIL EDITOR
+	 
+	    
+	      public void PurchaseProcessWeb(WebDriver driver1) throws Exception  
+	       {
+	    	
+	    	
+		
+		  WebDriver driver=driver1;
+	 	  Actions action= new Actions(driver);
+		  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		  Thread.sleep(1000);
+		
+		
+		  WebElement purchasemenu= driver.findElement(By.linkText(data.getData(3, 1, 2)));   //purchase
+		  Thread.sleep(1000); 
+		
+		  action.moveToElement(purchasemenu).build().perform();
+		
+		  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		
+	 	  driver.findElement(By.linkText(data.getData(3, 76, 2))).click();    // Purchase Process
+		
+	      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		  Thread.sleep(1000);
+		
+		
+		  Thread.sleep(3000);
+			
+	      WebElement iframe1= driver.findElement(By.id((data.getData(3, 81, 2)))); //switch to i frame
+		   
+	      driver.switchTo().frame(iframe1);
+		   
+		   
+	      Thread.sleep(2000);
+		  
+		   
+		 // String result1=driver.findElement(By.xpath(data.getData(3,100,2))).getText();   // Get text from web app (requisition order)
+		   
+		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		 
+		 
+		  String handleBefore = driver.getWindowHandle();       // Parent window
+		  
+		 
+		  driver.findElement(By.xpath(data.getData(3,100,2))).click();    // click reqsn order no
+		   
+	      Thread.sleep(1000);
+	     
+	     
+	     
+	      for (String handle : driver.getWindowHandles()) {          //Switch to new window
+	    	 
+	      driver.switchTo().window(handle);}
+	     
+	     
+	      driver.findElement(By.id(data.getData(3,102,2))).click();    //Send RFQ
+	      Thread.sleep(3000);
+	     
+	     
+	      driver.close();      //Close RFQ window
+	     
+	      Thread.sleep(3000);
+		  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+	      Thread.sleep(3000);
+			
+	         
+	      for (String handle : driver.getWindowHandles()) {           //Switch to new window
+	  
+	      driver.switchTo().window(handle);}
+	        
+		  Thread.sleep(3000);
+		 
+		  
+	       driver.findElement(By.xpath(data.getData(3, 83, 2))).click();   // Add Supplier Name1
+		   Thread.sleep(3000);
+		
+		   Select Vat_dd= new Select(driver.findElement(By.id(data.getData(3, 86, 2))));      // Vat 1st
+		   Vat_dd.selectByVisibleText(data.getData(3, 87, 2));
+		   Thread.sleep(2000);
+		  
+		  
+		   driver.findElement(By.id(data.getData(3, 88, 2))).sendKeys(data.getData(3,91,2));  // Delivery remarks1  vvv
+		   Thread.sleep(1000);
+			
+			
+		   driver.findElement(By.xpath(data.getData(3, 96, 2))).click();    // down arrow 1
+		   Thread.sleep(2000);
+		   Thread.sleep(2000);
+			    
+			    
+		   Select DeliveryPort1_dd= new Select(driver.findElement(By.id(data.getData(3, 92, 2))));    // Delivery Port1
+		   DeliveryPort1_dd.selectByVisibleText(data.getData(3, 95, 2));
+		  
+		  
+		   Thread.sleep(2000);
+			
+		   driver.findElement(By.id(data.getData(3, 98, 2))).click();   // send to selected suppliers
+			
+		   Thread.sleep(2000);
+		   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		   Thread.sleep(2000);  
+			
+		   for (String handle : driver.getWindowHandles()) {    // Switch to window email editor web
+		    	 
+		   driver.switchTo().window(handle);}
+		   
+		   Thread.sleep(3000);
+		   
+		   driver.close();
+		   
+		   Thread.sleep(3000);
+		    
+		   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+		   
+		   driver.switchTo().window(handleBefore);   // Switch to Parent
+		   
+		   
+		   driver.findElement(By.id(data.getData(3, 155, 2))).click();   //Logout 1st userlogin Arati
+		   
+		   
+		   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		    
+		   Thread.sleep(3000);
+		   Thread.sleep(2000);   
+		  
+		  
+		   //LOGIN AS SUPPLIER
+		   
+		   
+		   driver.manage().deleteAllCookies();
+		  
+		   System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arati\\workspace\\chromedriver.exe");
+			
+		   driver= new ChromeDriver();
+			
+		   driver.get("http://114.79.180.66/JIBE/Account/Login.aspx?");
+			
+		   driver.manage().window().maximize();
+			
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		  
+		  
+		   driver.findElement(By.id(data.getData(2, 1, 2))).sendKeys(data.getData(1,2,0));   // Read username from excelsheet    SUPPLIER
+			
+		   driver.findElement(By.id(data.getData(2, 2, 2))).sendKeys(data.getData(1,2,1));   //  Read Password from excelsheet
+			
+		   driver.findElement(By.id(data.getData(2, 3, 2))).click(); 				    //  Read login button  from excelsheet
+			
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   Thread.sleep(3000);
+		  
+		   String handleBefore1 = driver.getWindowHandle();       // Parent window
+		   
+		    driver.findElement(By.xpath(data.getData(3, 120, 2))).click();  // Click View
+		  
+		    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		    Thread.sleep(3000);
+		  
+		  
+		    for (String handle : driver.getWindowHandles()) {    // Switch to window 
+		    	 
+		    driver.switchTo().window(handle);}
+		  
+		  
+		    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		    Thread.sleep(3000);
+		  
+		 
+		    driver.findElement(By.name(data.getData(3, 121, 2))).sendKeys(data.getData(3,122,2));  // Currency
+		    Thread.sleep(2000);
+		  
+		  
+		    driver.findElement(By.id(data.getData(3, 123, 2))).sendKeys(data.getData(3,124,2));  // Truck Charge
+		     
+	
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 125, 2))).sendKeys(data.getData(3,126,2));     // Freight Cost
+			 
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 127, 2))).sendKeys(data.getData(3,128,2));     // Other Charge
+			
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.id(data.getData(3, 129, 2))).sendKeys(data.getData(3,130,2));     // Barge/Workboat Charge
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 131, 2))).clear();
+			driver.findElement(By.id(data.getData(3, 131, 2))).sendKeys(data.getData(3,132,2));     // Vat/GST(%)
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 133, 2))).sendKeys(data.getData(3,134,2));     // Pkg and handling Charges 
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 135, 2))).sendKeys(data.getData(3,136,2));     // Reason for Other Charges
+			
+			Thread.sleep(2000); 
+			
+			
+			driver.findElement(By.id(data.getData(3, 137, 2))).clear();
+			
+			driver.findElement(By.id(data.getData(3, 137, 2))).sendKeys(data.getData(3,138,2));     //  Discount On Quot.(%)
+			
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.id(data.getData(3, 139, 2))).sendKeys(data.getData(3,140,2));     // Supplier Qtn. Ref
+			 
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.id(data.getData(3, 141, 2))).sendKeys(data.getData(3,142,2));     //  Reasons for trans/Pkg charges
+			
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.id(data.getData(3, 143, 2))).click();  //  Option Button
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 144, 2))).clear();
+			
+			driver.findElement(By.id(data.getData(3, 144, 2))).sendKeys(data.getData(3,145,2));     //  OEM
+			
+			Thread.sleep(2000);
+			
+            driver.findElement(By.id(data.getData(3, 146, 2))).clear();
+			
+			driver.findElement(By.id(data.getData(3, 146, 2))).sendKeys(data.getData(3,147,2));     //  Original
+			
+			Thread.sleep(2000);
+		
+		
+            driver.findElement(By.id(data.getData(3, 148, 2))).clear();
+			
+			driver.findElement(By.id(data.getData(3, 148, 2))).sendKeys(data.getData(3,149,2));     //  Replacement
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.id(data.getData(3, 150, 2))).click();    // Save
+			
+			Thread.sleep(3000);
+			
+			
+			Select ItemType_dd= new Select(driver.findElement(By.id(data.getData(3, 151, 2))));      //  Item Type
+			ItemType_dd.selectByVisibleText(data.getData(3, 152, 2));
+			
+			Thread.sleep(3000);
+			
+			driver.findElement(By.id(data.getData(3, 153, 2))).click();     //  Submit
+			
+			// Switching to Alert        
+		    Alert alert1=driver.switchTo().alert();  
+
+		    // Capturing alert message.    
+			 @SuppressWarnings("unused")
+			 String alertMessage1=driver.switchTo().alert().getText();  
+			 // Displaying alert message  
+			 //  System.out.println(alertMessage);   
+			 Thread.sleep(1000);  
+			 // Accepting alert  
+		     alert1.accept();
+			 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			 Thread.sleep(5000);
+			 
+			 
+			 driver.switchTo().window(handleBefore1);   // Switch to Parent
+			 Thread.sleep(1000);  
+			 
+			 driver.findElement(By.id(data.getData(3, 154, 2))).click();    //logout supplier's
+			 
+			 
+			 
+			 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+			 Thread.sleep(5000);
+			 
+			 
+			 // LOGIN AS ARATI
+			 
+			 
+			 driver.manage().deleteAllCookies();
+			 
+			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arati\\workspace\\chromedriver.exe");
+				
+		     driver= new ChromeDriver();
+				
+			 driver.get("http://114.79.180.66/JIBE/Account/Login.aspx?");
+				
+			 driver.manage().window().maximize();
+				
+			 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+			 
+			 driver.findElement(By.id(data.getData(2, 1, 2))).clear();
+			 
+			 driver.findElement(By.id(data.getData(2, 1, 2))).sendKeys(data.getData(1,1,0));  // Read username from excelsheet  Arati
+			 
+			 
+			 driver.findElement(By.id(data.getData(2, 2, 2))).clear();
+				
+			 driver.findElement(By.id(data.getData(2, 2, 2))).sendKeys(data.getData(1,1,1));  //   Read Password from excelsheet
+			 
+			 	
+			 driver.findElement(By.id(data.getData(2, 3, 2))).click(); 				          //  Read login button  from excelsheet
+			 
+			 
+			 Actions action1= new Actions(driver);
+			 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			 Thread.sleep(1000);
+			
+			
+			 WebElement purchasemenu1= driver.findElement(By.linkText(data.getData(3, 1, 2)));   //purchase
+			 Thread.sleep(1000); 
+			
+			 action1.moveToElement(purchasemenu1).build().perform();
+			
+			 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+			
+		 	 driver.findElement(By.linkText(data.getData(3, 76, 2))).click();    // Purchase Process
+		 	 
+		     Thread.sleep(2000);
+		     
+		     
+             driver.findElement(By.id(data.getData(3, 156, 2))).click();   // 2nd stage RFQ/Quotation
+		     
+		     Thread.sleep(2000);
+		 	 
+		 	 
+		 	 WebElement iframe2= driver.findElement(By.id((data.getData(3, 81, 2)))); //switch to i frame
+			   
+		     driver.switchTo().frame(iframe2);
+		     
+		     Thread.sleep(2000);
+		     
+		     
+		     String handleBefore2 = driver.getWindowHandle();       // Parent window
+		     
+		     driver.findElement(By.id(data.getData(3, 157, 2))).click();    // Click on Quotation no.
+		     
+		     Thread.sleep(2000);
+		     
+		     
+		     for (String handle : driver.getWindowHandles()) {          // Switch to new window Quotation Comparision
+		    	 
+			 driver.switchTo().window(handle);}
+		     
+		     
+		     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		     
+		     Thread.sleep(2000);
+		     
+		     
+		     driver.findElement(By.id(data.getData(3, 158, 2))).click();   //  Select Supplier Check box
+		     
+		     Thread.sleep(2000);
+		     
+		     driver.findElement(By.id(data.getData(3, 159, 2))).click();   //  Compare Quotation
+		     
+		     Thread.sleep(2000);
+		     Thread.sleep(2000);
+		     Thread.sleep(4000);
+		     
+		   //  Select item= new Select(driver.findElement(By.partialLinkText("ctl00_MainContent_rgdQuatationInfo_ctl02")));    
+		     
+			// item.selectByIndex(0);
+		     
+			// driver.findElement(By.xpath("//*[contains(@id, 'ctl00_MainContent_rgdQuatationInfo_ctl02')]")).click();
+			 
+			// driver.findElement(By.xpath("//*[starts-with(@id, 'ctl00_MainContent_rgdQuatationInfo_')]")).click();
+			 
+			 
+			 
+		    
+		    // driver.findElement(By.partialLinkText("ctl00_MainContent_rgdQuatationInfo_")).click();
+		     
+		     
+		    // input[contains(@id, 'ctl00_MainContent_rgdQuatationInfo_ctl02')];
+		     
+		   //  driver.findElement(By.xpath("//*[contains(@name, 'RFQ_19_IMRA')]")).click();
+			 
+			// String path = "//input[contains(@id,'ctl00_MainContent_rgdQuatationInfo_')]";
+			 
+			 
+			// List<WebElement> list = driver.findElements(By.xpath("//*[starts-with(@id,'ctl00_MainContent_rgdQuatationInfo_')]"));
+			// for(WebElement option : list){
+			    // System.out.println(option.getText());
+			    // if(option.getText().equals("ctl00$MainContent$rgdQuatationInfo$ctl02")) {
+			     //    option.click();
+			      //   break;
+			    // }
+			 
+			
+			// } 
+			
+			 
+		   driver.findElement(By.id(data.getData(3, 160, 2))).click();     // Save Quotation Evaluation
+		   
+		   Thread.sleep(3000);
+		   
+		   driver.close();
+		   
+		   Thread.sleep(3000);
+		   
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   
+		   driver.switchTo().window(handleBefore2);   // Switch to Parent
+		   Thread.sleep(1000);  
+	
+			 
+		  // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	      
+		  // Thread.sleep(1000);
+	      
+		  // Thread.sleep(2000);
+		   
+		  
+		   WebElement iframe3= driver.findElement(By.id(data.getData(3, 81, 2))); //switch to i frame
+		   
+		   driver.switchTo().frame(iframe3);
+		      
+		   Thread.sleep(2000);
+		  
+		  
+		   driver.findElement(By.id(data.getData(3, 161, 2))).click();    // Send To Supdt
+		  
+		   Thread.sleep(2000);
+		   
+		   
+		   Select approver=new Select(driver.findElement(By.id(data.getData(3, 162, 2))));       // Approver
+		   approver.selectByVisibleText(data.getData(3, 163, 2));
+		   
+		   
+		   Thread.sleep(2000);
+		   
+		   driver.findElement(By.id(data.getData(3, 164, 2))).sendKeys(data.getData(3,165,2));   //Remark
+		   
+		   
+		   Thread.sleep(2000);
+		   
+		   driver.findElement(By.id(data.getData(3, 166, 2))).click();           // Save & Send For Approval
+		   
+		   Thread.sleep(2000);
+		   
+		   driver.switchTo().window(handleBefore2);   // Switch to Parent
+		   Thread.sleep(1000);
+		   
+		   
+		   driver.findElement(By.id(data.getData(3, 155, 2))).click();   // Logout Arati
+		   
+		   Thread.sleep(2000);
+		   
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);     
+		   
+		   
+		   // LOGIN APPROVER (petar)
+		   
+		
+		   driver.manage().deleteAllCookies();
+			  
+		   System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arati\\workspace\\chromedriver.exe");
+			
+		   driver= new ChromeDriver();
+			
+		   driver.get("http://114.79.180.66/JIBE/Account/Login.aspx?");
+			
+		   driver.manage().window().maximize();
+			
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		  
+		  
+		   driver.findElement(By.id(data.getData(2, 1, 2))).sendKeys(data.getData(1,3,0));   // Read username from excelsheet    APPROVER
+			
+		   driver.findElement(By.id(data.getData(2, 2, 2))).sendKeys(data.getData(1,3,1));   //  Read Password from excelsheet
+			
+		   driver.findElement(By.id(data.getData(2, 3, 2))).click(); 				    //  Read login button  from excelsheet
+			
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   Thread.sleep(3000);
+		   
+		   Actions action2= new Actions(driver);
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   Thread.sleep(1000);
+			
+			
+		   WebElement purchasemenu2= driver.findElement(By.linkText(data.getData(3, 1, 2)));   //purchase
+		   Thread.sleep(1000); 
+			
+		   action2.moveToElement(purchasemenu2).build().perform();
+			
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+			
+		   driver.findElement(By.linkText(data.getData(3, 76, 2))).click();    // Purchase Process
+		 	 
+		   Thread.sleep(2000);
+		   
+		   
+		   
+		   driver.findElement(By.id(data.getData(3, 170, 2))).click();   //  Click 3rd Stage Quotation Approval
+	    
+		   
+		   Thread.sleep(3000);
+		   
+           WebElement iframe4= driver.findElement(By.id(data.getData(3, 81, 2))); //switch to i frame
+		   
+		   driver.switchTo().frame(iframe4);
+		   
+		   Thread.sleep(3000);
+		   
+		 //  String handleBefore3 = driver.getWindowHandle();       // Parent window
+		   
+		   
+		   driver.findElement(By.id(data.getData(3, 171, 2))).click();     // Evaluate
+		   
+		   
+		   for (String handle : driver.getWindowHandles()) {           //Switch to new window Quotation Comparision
+				  
+		   driver.switchTo().window(handle);}
+		   
+		   
+		   Thread.sleep(2000);
+		  
+		   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   Thread.sleep(4000);
+		  
+		   
+		  // WebElement radiobtn=driver.findElement(By.id("ctl00_MainContent_optEvalCSupp"));     // 
+		  // radiobtn.click();
+		   
+		   
+		 //  driver.findElement(By.id("ctl00_MainContent_btnRetrieve")).click();     //Compare Quotation
+		   
+		  // driver.findElement(By.name("ctl00$MainContent$btnRetrieve")).click();
+		   
+		   Thread.sleep(3000);
+		   
+		   driver.findElement(By.id("ctl00_MainContent_btnFinalizeEval")).click();  // Assign Budget code & Approve
+		   
+		   
+		   Thread.sleep(2000);
+		   
+		//   driver.switchTo().window(handleBefore3);   // Switch to Parent
+	       
+	       }
+	    
+	 
+		
+	

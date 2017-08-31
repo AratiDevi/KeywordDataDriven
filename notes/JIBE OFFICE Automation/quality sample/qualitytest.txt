@@ -1,0 +1,139 @@
+package qtest;
+
+//import static org.junit.Assert.assertTrue;
+
+import java.util.concurrent.TimeUnit;
+
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+//import org.testng.Assert;
+
+import org.testng.annotations.Test;
+
+import commonfunction.WebDriverPass;
+
+import quality.qualityinfo;
+@Test
+public class qualitytest extends WebDriverPass {
+
+qualityinfo qinfo = new qualityinfo();
+@Test(priority=0)
+	public void qualitypendingapproval() throws Exception {
+		
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.pendingapproval(driver);
+}
+@Test(priority=1)
+		public void qualityapproval() throws Exception
+		{
+		
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.approval(driver);
+		}
+@Test(priority=2)
+public void qualitypendingblank() throws Exception
+{
+	
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.pendingblank(driver);
+}
+@Test(priority=3)
+public void addform() throws Exception
+{
+	
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.form(driver);
+}
+@Test(priority=4)
+public void verifyform() throws Exception
+{
+	
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.formverify(driver);
+}
+@Test(priority=5)
+public void delok() throws Exception
+{
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.formdeleteok(driver);
+}
+@Test(priority=6)
+public void delcancel() throws Exception
+{
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.formdeletecancel(driver);
+}
+@Test(priority=7)
+public void editform() throws Exception
+{
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.formedit(driver);
+}
+
+@Test(priority=8)
+public void verifyforminfile() throws Exception
+{
+	driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	Thread.sleep(1000L);
+	
+	qinfo.fileeditverify(driver);
+	
+	String expected="test100";
+	
+	//Select formtype = new Select(driver.findElement(By.tagName("select")));
+	
+	//formtype.selectByVisibleText("test100");
+	String actual="test100";
+	if(expected.equals(actual))
+	{
+		System.out.println("success");
+	}
+	else
+	{
+		System.out.println("failed");
+	}
+	Assert.assertEquals(expected,actual);
+	//assertTrue("verification failed",expected.equals(actual));
+	
+	
+		
+	
+}
+
+
+		/*String actual = driver.getTitle().trim();
+
+		String Exp = "FMS File Approval";
+
+		Assert.assertEquals(actual, Exp);
+
+		System.out.println("successful");*/
+		
+	}
+
+		
+		
+	
+
+

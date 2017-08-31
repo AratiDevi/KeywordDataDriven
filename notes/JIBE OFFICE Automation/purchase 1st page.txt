@@ -1,0 +1,113 @@
+package testcase;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import commonfunction.Login;
+
+public class Purchase extends Login  {
+ 
+ public static WebDriver driver;
+ 
+ public void  purchase1(WebDriver driver1) throws Exception 
+  {
+  
+  WebDriver driver = driver1;
+  Actions actions = new Actions(driver);
+  Thread.sleep(1000);
+   
+  driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+  
+     WebElement menu=driver.findElement(By.linkText("Purchase"));    //Purchase
+  
+  actions.moveToElement(menu).build().perform();
+  
+  Thread.sleep(1000);
+  
+  driver.findElement(By.linkText("Create New Reqsn")).click();; //Create reqsn
+  
+     Thread.sleep(1000);
+     
+     Select dropdown = new Select(driver.findElement(By.id("ctl00_MainContent_DDLFleet")));//Select fleet
+
+    dropdown.selectByVisibleText("Fleet-B");
+
+    Thread.sleep(1000);
+   
+    Select dropdown1 = new Select(driver.findElement(By.id("ctl00_MainContent_DDLVessel")));//Select Vessel
+
+    dropdown1.selectByVisibleText("HARUKA");
+
+    Thread.sleep(1000);
+    
+    driver.findElement(By.id("ctl00_MainContent_optList_0")).click();// Department type
+    
+   
+    Select dropdown2 = new Select(driver.findElement(By.id("ctl00_MainContent_cmbDept")));//Select department type
+
+    dropdown2.selectByVisibleText("Computers");
+
+    Thread.sleep(1000);
+   
+    Select dropdown3 = new Select(driver.findElement(By.id("ctl00_MainContent_rgdCatalog")));//Select department
+
+    dropdown3.selectByVisibleText("A System");
+
+    Thread.sleep(1000);
+     
+    Select dropdown4 = new Select(driver.findElement(By.id("ctl00_MainContent_cmbdivReqPrio")));//Select department
+
+    dropdown4.selectByVisibleText("Normal");
+
+    Thread.sleep(1000);
+                                
+    Select dropdown5 = new Select(driver.findElement(By.id("ctl00_MainContent_ddlReqsnType")));
+
+    dropdown5.selectByVisibleText("Piece Meal");
+
+    Thread.sleep(1000);
+
+
+
+
+
+
+
+
+
+
+
+
+ TestNG:-
+
+
+
+package testngclass;
+
+import java.util.concurrent.TimeUnit;
+
+import org.testng.annotations.Test;
+import testcase.Purchase;
+
+
+@Test
+public class purchaseTest extends WebDriverPass
+{
+ 
+ Purchase purch =new Purchase();
+ 
+@Test(priority=0)
+ public void Purchase() throws Exception
+ {
+  driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+   Thread.sleep(1000);
+   
+   purch.purchase1(driver);
+ }
+}
+
